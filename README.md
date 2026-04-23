@@ -7,7 +7,7 @@ MCP server that exposes OkoCRM REST API (`https://api.okocrm.com/v2`) as MCP too
 - Docker
 - OkoCRM API token (from OkoCRM profile settings)
 
-## Docker Usage
+## Docker Usage (Build Locally)
 
 1. Build image:
 ```bash
@@ -22,7 +22,7 @@ docker run --rm -i \
   okocrm-mcp:latest
 ```
 
-## Claude Desktop Config (Recommended)
+## Claude Desktop Config (Local Image)
 
 Use explicit `-e KEY=value` arguments:
 
@@ -38,6 +38,26 @@ Use explicit `-e KEY=value` arguments:
         "-e",
         "OKOCRM_API_TOKEN=your_token_here",
         "okocrm-mcp:latest"
+      ]
+    }
+  }
+}
+```
+
+## Claude Desktop Config (Prebuilt GHCR Image)
+
+```json
+{
+  "mcpServers": {
+    "okocrm": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "-e",
+        "OKOCRM_API_TOKEN=your_token_here",
+        "ghcr.io/amplifylab/okocrm-mcp:latest"
       ]
     }
   }
